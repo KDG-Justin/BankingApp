@@ -1,0 +1,28 @@
+BankingAPI/
+│
+├── Controllers/          # Alleen HTTP-requests opvangen en antwoorden (React communicatie)
+│   ├── AccountsController.cs
+│   └── TransactionsController.cs
+│
+├── Core/                 # De "Business Logic" & SOLID Interfaces (Onafhankelijk van SQL/React)
+│   ├── Entities/         # Pure database modellen / tabellen
+│   │   ├── Account.cs
+│   │   └── Transaction.cs
+│   ├── Interfaces/       # DIP: Interfaces voor repositories en services
+│   │   ├── IAccountService.cs
+│   │   └── IAccountRepository.cs
+│   └── Services/         # SRP: Echte banklogica (bv. rente berekenen, saldo checken)
+│       └── AccountService.cs
+│
+├── Infrastructure/       
+│   ├── Data/             
+│   │   └── BankDbContext.cs
+│   └── Repositories/     # De daadwerkelijke SQL-queries (via EF Core)
+│       └── AccountRepository.cs
+│
+├── Models/               # DTO's (Data Transfer Objects) voor communicatie React
+│   ├── AccountDto.cs
+│   └── CreateAccountRequest.cs
+│
+├── Program.cs            
+└── appsettings.json      
